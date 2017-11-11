@@ -3,75 +3,28 @@ import PropTypes from 'prop-types'
 import ChatBot, { Loading } from 'react-simple-chatbot'
 import rp from 'request-promise'
 
-class Review extends Component {
-  constructor (props) {
-    super(props)
-
-    this.state = {
-      name: '',
-      gender: '',
-      age: ''
-    }
-  }
-
-  componentWillMount () {
-    const { steps } = this.props
-    const { name, gender, age } = steps
-
-    this.setState({ name, gender, age })
-  }
-
-  render () {
-    const { name, gender, age } = this.state
-    return (
-      <div style={{ width: '100%' }}>
-        <h3>Summary</h3>
-        <table>
-          <tbody>
-            <tr>
-              <td>Name</td>
-              <td>{name.value}</td>
-            </tr>
-            <tr>
-              <td>Gender</td>
-              <td>{gender.value}</td>
-            </tr>
-            <tr>
-              <td>Age</td>
-              <td>{age.value}</td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-    )
-  }
-}
-
-Review.propTypes = {
-  steps: PropTypes.object
-}
-
-Review.defaultProps = {
-  steps: undefined
-}
-
-class SimpleForm extends Component {
+class Quizbot extends Component {
   constructor () {
     super()
     this.state = {
       steps: null
     }
-    console.log('constructor')
-    console.log(this.state)
   }
 
   async componentWillMount () {
-    const steps = await this.getSteps()
-    await this.setState({
-      steps: steps
-    })
-    console.log(this.state)
-    this.forceUpdate()
+    try {
+      const steps = await this.getSteps()
+      await this.setState({
+        steps: steps
+      })
+    } catch (error) {
+      await this.setState({
+        steps: [{
+          id: 0,
+          message: 'No  internet connection'
+        }]
+      })
+    }
   }
 
   async getSteps () {
@@ -81,17 +34,18 @@ class SimpleForm extends Component {
 
   render () {
     const { steps } = this.state
-    console.log('render')
-    return this.state.steps
-    ? (
-      <ChatBot
-        steps={steps}
-      />
-    )
-    : (
-      <Loading />
-    )
+    return <div> {
+      this.state.steps
+      ? (
+        <ChatBot
+          steps={steps}
+        />
+      )
+      : (
+        <Loading />
+      ) }
+    </div>
   }
 }
 
-export default SimpleForm
+export default Quizbot

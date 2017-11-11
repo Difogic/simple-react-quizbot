@@ -23,6 +23,54 @@
 }
 
 @keyframes App-logo-spin {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+* {
+  font-family: Nunito
+}
+
+body {
+  width: 700px;
+  margin: auto;
+  padding-top: 40px
+}
+
+h1 {
+  font-size: 32px;
+  float: left
+}
+
+form input[type=text] {
+  font-size: 18px
+}
+
+.result {
+  padding: 5px 10px;
+  margin-top: 5px
+}
+
+.fa {
+  margin-right: 10px
+}
+
+.sk-rotating-plane {
+  background-color: #33C3F0;
+  margin-top: 100px
+}
+
+footer {
+  margin-top: 100px;
+  padding-bottom: 20px;
+  height: 30px
+}
+
+.links a {
+  margin-right: 10px;
+  margin-left: 10px
 }
