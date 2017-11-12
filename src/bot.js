@@ -6,13 +6,29 @@ import rp from 'request-promise'
 class ResultsView extends Component {
   constructor (props) {
     super(props)
-    console.log(props)
-  }
-  render () {
     const { steps } = this.props
     const score = Object.values(steps).filter(i => i.value > 0).length
+    this.state = {
+      score: score
+    }
+  }
+
+  async componentWillMount () {
+
+  }
+
+  createBageUrl (name, score, locale) {
+    return `https://zmeu213.unit.run/quiz-bot-bage-creator?name=${encodeURIComponent(name)}&score=${score}&lang=${locale}`
+  }
+
+  render () {
+    const { score } = this.state
+    const imgurl = this.createBageUrl('Noname', score, 'en_US')
     return (
-      <div>You scored {score} of 10!</div>
+      <div>
+        <h3>You scored {score} of 10!</h3>
+        <img src={imgurl} alt='Badge' width='100%' />
+      </div>
     )
   }
 }
