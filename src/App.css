@@ -31,15 +31,11 @@
   }
 }
 
-body {
+.quizbot {
   width: 700px;
   margin: auto;
-  padding-top: 40px
-}
-
-h1 {
-  font-size: 32px;
-  float: left
+  padding-top: 40px;
+  align-content: center
 }
 
 form input[type=text] {

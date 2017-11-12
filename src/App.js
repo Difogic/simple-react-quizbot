@@ -6,9 +6,14 @@ import Quizbot from './bot'
 class App extends Component {
   render () {
     return (
-      <div className='App animated fadeIn'>
-        <h1><i className='fa fa-search' /> Simple react quizbot</h1>
-        <Quizbot />
+      <div className='App'>
+        <header className='App-header'>
+          <img src={logo} className='App-logo' alt='logo' />
+          <h1>Simple react quizbot</h1>
+        </header>
+        <div className='quizbot animated fadeIn'>
+          <Quizbot />
+        </div>
         <footer>
           <div className='u-pull-right links'>
             Powered by
