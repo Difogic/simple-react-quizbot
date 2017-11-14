@@ -6,8 +6,8 @@ import Quizbot from './bot'
 class App extends Component {
   render () {
     return (
-      <div className='App'>
-        <div className='quizbot animated fadeIn'>
+      <div className='App container-fluid'>
+        <div className='quizbot'>
           <Quizbot />
         </div>
         <footer>

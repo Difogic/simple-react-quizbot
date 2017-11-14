@@ -2,7 +2,8 @@ import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import ChatBot, { Loading } from 'react-simple-chatbot'
 import rp from 'request-promise'
-import { parse } from 'twemoji'
+import ReactEmoji, { emojify } from 'react-emoji'
+import reactMixin from 'react-mixin'
 
 class AudioStep extends Component {
   render () {
@@ -128,7 +129,8 @@ class Quizbot extends Component {
         step.component = <ImageStep image={image} />
       }
       // if (step.message) {
-      //   step.message = parse(step.message)
+      //   step.message = emojify(step.message)[0]
+      //   console.log(step.message)
       // }
     })
     console.log(steps)
@@ -141,8 +143,13 @@ class Quizbot extends Component {
       this.state.steps
       ? (
         <ChatBot
+          width={'100%'}
+          style={{
+            heigth: '100%'
+          }}
           handleEnd={handleEnd}
           steps={steps}
+          userDelay={10}
         />
       )
       : (
@@ -151,5 +158,8 @@ class Quizbot extends Component {
     </div>
   }
 }
+
+
+reactMixin(Quizbot.prototype, ReactEmoji)
 
 export default Quizbot
