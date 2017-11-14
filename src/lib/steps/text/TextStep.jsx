@@ -41,7 +41,7 @@ class TextStep extends Component {
       triggerNextStep
     } = this.props
     const { component } = step
-    let { message } = step
+    let { message, image } = step
 
     if (component) {
       return React.cloneElement(component, {
@@ -52,11 +52,16 @@ class TextStep extends Component {
       })
     }
 
-    console.log('->', message)
-    message = (<Emoji size='16'>
-      {message.replace(/{previousValue}/g, previousValue)}
-    </Emoji>)
-    console.log('-->', message)
+    if (image) {
+      message = <img src={image} width='100%' />
+    } else {
+      message = (
+        <Emoji size='16'>
+          {message.replace(/{previousValue}/g, previousValue)}
+        </Emoji>
+      )
+    }
+
     return message
   }
 

@@ -1,5 +1,6 @@
 import userSchema from './userSchema'
 import textSchema from './textSchema'
+import imageSchema from './imageSchema'
 import optionsSchema from './optionsSchema'
 import customSchema from './customSchema'
 import updateSchema from './updateSchema'
@@ -12,6 +13,8 @@ const schema = {
 
     if (step.user) {
       parser = userSchema
+    } else if (step.image) {
+      parser = imageSchema
     } else if (step.message) {
       parser = textSchema
     } else if (step.options) {

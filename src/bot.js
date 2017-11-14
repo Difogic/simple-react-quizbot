@@ -122,11 +122,11 @@ class Quizbot extends Component {
         delete step.audio
         step.component = <AudioStep audio={audio} />
       }
-      if (step.image) {
-        const image = step.image
-        delete step.image
-        step.component = <ImageStep image={image} />
-      }
+      // if (step.image) {
+      //   const image = step.image
+      //   delete step.image
+      //   step.component = <ImageStep image={image} />
+      // }
     })
     console.log(steps)
   }
