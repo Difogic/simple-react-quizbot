@@ -1,9 +1,8 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
-import ChatBot, { Loading } from 'react-simple-chatbot'
+import ChatBot from './lib/ChatBot'
 import rp from 'request-promise'
-import ReactEmoji, { emojify } from 'react-emoji'
-import reactMixin from 'react-mixin'
+import logo from './logo.svg'
 
 class AudioStep extends Component {
   render () {
@@ -128,10 +127,6 @@ class Quizbot extends Component {
         delete step.image
         step.component = <ImageStep image={image} />
       }
-      // if (step.message) {
-      //   step.message = emojify(step.message)[0]
-      //   console.log(step.message)
-      // }
     })
     console.log(steps)
   }
@@ -139,27 +134,23 @@ class Quizbot extends Component {
   render () {
     const { steps } = this.state
     const handleEnd = this.handleEnd.bind(this)
+
     return <div> {
       this.state.steps
       ? (
         <ChatBot
           width={'100%'}
-          style={{
-            heigth: '100%'
-          }}
+          headerTitle={'Powerd by Unitcluster.com'}
           handleEnd={handleEnd}
           steps={steps}
           userDelay={10}
         />
       )
       : (
-        <Loading />
+        <img src={logo} className='App-logo' alt='logo' />
       ) }
     </div>
   }
 }
-
-
-reactMixin(Quizbot.prototype, ReactEmoji)
 
 export default Quizbot

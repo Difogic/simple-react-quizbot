@@ -8,10 +8,10 @@ html,body {
 .App {
   text-align: center;
   padding: 0px;
-  max-height: 100%;
+  /* max-height: 100%;
   height:100%;
   width:100%;
-  overflow:hidden; /* or overflow:auto; if you want scrollbars */
+  overflow:hidden; or overflow:auto; if you want scrollbars */
 }
 
 .App-logo {
@@ -46,6 +46,7 @@ html,body {
 @media (max-width: 767px) {
   .quizbot {
     width: 100%;
+    height: 100%;
     margin: 0 auto;
     padding: 0px;
     align-content: center
