@@ -7,7 +7,7 @@ const ChatBotContainer = styled.div`
   box-shadow: 0 12px 24px 0 rgba(0, 0, 0, 0.15);
   font-family: ${({ theme }) => theme.fontFamily};
   overflow: hidden;
-  position: ${props => props.floating ? 'fixed' : 'relative'};
+  position: relative;
   bottom: ${props => props.floating ? '32px' : 'initial'};
   right: ${props => props.floating ? '32px' : 'initial'};
   width: ${props => props.width};
@@ -16,8 +16,9 @@ const ChatBotContainer = styled.div`
   transform-origin: bottom right;
   transition: transform .3s ease;
 
-  @media screen and (max-width: 568px) {
-    border-radius: ${props => props.floating ? '0' : ''};
+  @media screen and (max-width: 768px) {
+    position: fixed;
+    border-radius: '0';
     bottom: 0;
     height: 100%;
     right: 0;

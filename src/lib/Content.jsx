@@ -7,7 +7,7 @@ const Content = styled.div`
   padding-top: 6px;
 
   @media screen and (max-width: 768px) {
-    height: calc(100% - 112px);
+    height: calc(100% - 112px) !important;
   }
 `
 
